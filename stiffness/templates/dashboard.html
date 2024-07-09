@@ -1,0 +1,144 @@
+<section class="position-relative py-4 py-xl-5">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="card shadow mb-4">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h6 class="text-primary fw-bold m-0">Interpolation for a</h6>
+
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-area"><canvas height="320" width="572"
+                                style="display: block; height: 320px; width: 572px;" id="interpolationChartA"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-lg-6">
+                <div class="card shadow mb-4">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h6 class="text-primary fw-bold m-0">Interpolation for b</h6>
+
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-area"><canvas height="320" width="572"
+                                style="display: block; height: 320px; width: 572px;" id="interpolationChartB"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-lg-6">
+                <div class="card shadow mb-4">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h6 class="text-primary fw-bold m-0">Interpolation for c</h6>
+
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-area"><canvas height="320" width="572"
+                                style="display: block; height: 320px; width: 572px;" id="interpolationChartC"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-lg-6">
+                <div class="card shadow mb-4">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h6 class="text-primary fw-bold m-0">Interpolation for d</h6>
+
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-area"><canvas height="320" width="572"
+                                style="display: block; height: 320px; width: 572px;" id="interpolationChartD"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-lg-6">
+                <div class="card shadow mb-4">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h6 class="text-primary fw-bold m-0">Interpolation for e</h6>
+
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-area"><canvas height="320" width="572"
+                                style="display: block; height: 320px; width: 572px;" id="interpolationChartE"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- <div class="container-fluid">
+            <h1 class="h3 mb-4 text-gray-800">Interpolation for a</h1>
+            <canvas id="interpolationChartA"></canvas>
+        </div> -->
+
+
+
+    </div>
+</section>
+
+
+{% if chart_data %}
+
+<script>
+
+    // define function to create chart
+    let dataIn = {{ chart_data | safe }};
+
+    function createChart(chartId, letter) {
+        var ctx = document.getElementById(chartId).getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: dataIn['phi_range'],
+                datasets: [{
+                    label: 'Interpolation',
+                    data: dataIn[letter],
+                    backgroundColor: 'rgba(0, 123, 255, 0.5)',
+                    borderColor: 'rgba(0, 123, 255, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Phi (degrees)'
+                        }
+                    },
+                    y: {
+                        title: {
+                            display: true,
+                            text: 'Interpolated value'
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    // Loop through a to e and create charts
+    ['a', 'b', 'c', 'd', 'e'].forEach(function (letter) {
+        // datax = data[letter];
+
+        createChart('interpolationChart' + letter.toUpperCase(), letter);
+    });
+
+
+</script>
+
+
+{% endif %}

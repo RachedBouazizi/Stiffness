@@ -1,0 +1,78 @@
+<html data-bs-theme="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+    <title>Blank Page - Brand</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/css/bootstrap.min.css') }}" />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Inter:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&amp;display=swap" />
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.min.css') }}" />
+    <script src="{{ url_for('static', filename='js/util.js') }}"></script>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+          TeX: {
+             equationNumbers: {  autoNumber: "AMS"  },
+             extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"],
+               
+          }
+        });
+        
+        </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+</head>
+
+<body id="page-top">
+    <div id="wrapper">
+        <nav class="navbar align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0 navbar-dark">
+            <div class="container-fluid d-flex flex-column p-0"><a
+                    class="navbar-Rached d-flex justify-content-center align-items-center sidebar-Rached m-0" href="#">
+                    <div class="sidebar-Rached-icon rotate-n-15"><i class="fas fa-laugh-wink"></i></div>
+                    <div class="sidebar-Rached-text mx-3"><span>Rached</span></div>
+                </a>
+                <hr class="sidebar-divider my-0" />
+                <ul id="accordionSidebar" class="navbar-nav text-light">
+                    <li class="nav-item"><a class="nav-link active" href="/"><i
+                                class="fas fa-tachometer-alt"></i><span>home</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="/dashboard"><i
+                                class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
+                    <li class="nav-item"><a class="nav-link " href="/stiffness"><i
+                                class="fas fa-window-maximize"></i><span>Stiffness</span></a></li>
+                </ul>
+
+            </div>
+        </nav>
+        <div id="content-wrapper" class="d-flex flex-column">
+            <div id="content">
+                <nav class="navbar navbar-expand bg-white shadow mb-4 topbar">
+                    <div class="container-fluid">
+                        {% if page_html %} {{page_html}} {%else %} Home {% endif %}
+                    </div>
+                </nav>
+                {% if page_html == 'stiffness' %}
+                {% include 'stiffness.html' %}
+                {% elif page_html == 'dashboard' %}
+                {% include 'dashboard.html' %}
+                {% else %}
+                <h1>Hello, World!</h1>
+                {% endif %}
+            </div>
+            <div id="content-wrapper" class="d-flex flex-column">
+                <div id="content">
+                </div>
+                <footer class="bg-white sticky-footer">
+                    <div class="container my-auto">
+                        <div class="text-center my-auto copyright"><span>Copyright © Rached 2024</span></div>
+                    </div>
+                </footer>
+            </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
+        </div>
+</body>
+
+</html>

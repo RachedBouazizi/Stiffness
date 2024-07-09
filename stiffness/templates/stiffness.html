@@ -1,0 +1,373 @@
+<section class="position-relative py-4 py-xl-5">
+    <div class="container">
+        <div class="row d-flex justify-content-center">
+            <div class="col col-xxl-7">
+                <div class="card">
+                    <div class="card-body" style="padding-bottom: 15px;">
+                        <h1>Enter Data</h1>
+                        <form class="text-center" action="{{ url_for('handle_data') }}" method="post"
+                            style="width: 100%;">
+                            <div class="row" style="padding: 12px;">
+                                <div class="col-md-6 col-lg-4 col-xl-6 col-xxl-6 col-xxl-6" style="text-align: left;">
+                                    <label class="col-form-label"
+                                        style="font-weight: bold;margin-right: 0px;text-align: left;">Soil
+                                        density:</label>
+                                </div>
+                                <div class="col-lg-4 col-xl-6 col-xxl-6 col-xxl-6 align-self-center">
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="form-check text-start mx-auto"><input id="Between"
+                                                    class="form-check-input" type="radio" name="soilDensity"
+                                                    value="none" checked /><label class="form-check-label"
+                                                    for="Between">Between</label></div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-check text-start mx-auto"><input id="Dense"
+                                                    class="form-check-input" type="radio" name="soilDensity"
+                                                    value="dense" /><label class="form-check-label"
+                                                    for="Dense">Dense</label></div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-check text-start ms-auto"><input id="Loose"
+                                                    class="form-check-input" type="radio" name="soilDensity"
+                                                    value="loose" /><label class="form-check-label"
+                                                    for="Loose">Loose</label></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" style="padding: 12px;">
+                                <div class="col-sm-12 col-md-6 col-lg-4 col-xl-6 col-xxl-6 col-xxl-6 text-start"><label
+                                        class="col-form-label"
+                                        style="margin-right: 15px;text-align: left;"><strong>Internal friction angle of
+                                            the soil \(\phi = \)</strong></label></div>
+                                <div class="col-lg-4 col-xl-6 col-xxl-6 col-xxl-6 align-self-center"><input
+                                        class="form-control form-control-sm" type="number" step='0.01' required min="20"
+                                        max="45" name="phi" />
+                                </div>
+                            </div>
+                            <div class="row" style="padding: 12px;">
+                                <div class="col-sm-12 col-md-6 col-lg-4 col-xl-6 col-xxl-6 col-xxl-6 text-start"><label
+                                        class="col-form-label"
+                                        style="margin-right: 15px;text-align: left;"><strong>Effective unit weight of
+                                            soil \( \gamma \) =</strong></label></div>
+                                <div class="col-lg-4 col-xl-6 col-xxl-6 col-xxl-6 align-self-center"><input
+                                        class="form-control form-control-sm" type="number" step='0.01' required min="0"
+                                        max="360" name="gamma" />
+                                </div>
+                            </div>
+                            <div class="row" style="padding: 12px;">
+                                <div class="col-sm-12 col-md-6 col-lg-4 col-xl-6 col-xxl-6 col-xxl-6 col-md-6"
+                                    style="text-align: left;"><label class="col-form-label"
+                                        style="margin-right: 15px;"><strong>Pipe outside diameter \( D =
+                                            \)</strong></label></div>
+                                <div class="col-lg-4 col-xl-6 col-xxl-6 col-xxl-6 align-self-center"><input
+                                        class="form-control form-control-sm" type="number" step='0.01' required
+                                        name="pipeOutside" /></div>
+                            </div>
+                            <div class="row" style="padding: 12px;">
+                                <div class="col-sm-12 col-md-6 col-lg-4 col-xl-6 col-xxl-6 col-xxl-6 text-start"><label
+                                        class="col-form-label"
+                                        style="margin-right: 15px;text-align: left;"><strong>Depth to pipe
+                                            certerline \( H =\)</strong></label></div>
+                                <div class="col-lg-4 col-xl-6 col-xxl-6 col-xxl-6 align-self-center"><input
+                                        class="form-control form-control-sm" type="number" required step='0.01'
+                                        name="depth" />
+                                </div>
+                            </div>
+                            <div class="row" style="padding: 12px;">
+                                <div class="col-sm-12 col-md-6 col-lg-4 col-xl-6 col-xxl-6 col-xxl-6 text-start"><label
+                                        class="col-form-label" style="margin-right: 15px;text-align: left;"><strong>Pipe
+                                            Coating \( f \)</strong></label></div>
+                                <div class="col-lg-4 col-xl-6 col-xxl-6 col-xxl-6"><select class="form-select" required
+                                        name="pipeCoating">
+                                        <optgroup label="Pipe Coating">
+                                            <option value="1" selected>Concrete</option>
+                                            <option value="0.9">Coal Tar</option>
+                                            <option value="0.8">Rough Steel</option>
+                                            <option value="0.7">Smooth Steel</option>
+                                            <option value="0.6">Fusion Bonded Epoxy</option>
+                                            <option value="0.6">Polythlene</option>
+                                        </optgroup>
+                                    </select></div>
+                            </div>
+                            <div class="row">
+                                <div class="col text-end" style="padding: 12px;padding-top: 12px;padding-bottom: 12px;">
+                                    <button class="btn btn-primary btn-sm d-sm-inline-block" type="submit">
+                                        Calculate </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+{% if datacalc %}
+<div class="container-fluid">
+    <h3 class="text-dark mb-1">Results</h3>
+</div>
+
+<section class="position-relative py-4 py-xl-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-xl-12 col-xxl-12 mb-4">
+                <div class="card shadow border-left-info py-2">
+                    <div class="card-body">
+                        <div class="row g-0 align-items-center">
+                            <div class="col me-2">
+                                <div class="text-uppercase text-danger fw-bold mb-1"> Data
+                                    <div class="text-dark fw-bold h5 mb-0">
+                                        <span> \( \phi = {{datacalc['phi']}} \) </span> ;
+                                        <span> \(\gamma = {{datacalc['gamma']}} \)</span> ;
+                                        <span> \(D = {{datacalc['D']}} \)</span> ;
+                                        <span> \(H = {{datacalc['H']}} \)</span> ;
+                                        <span> \(f = {{datacalc['f']}} \)</span> ;
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12 col-xl-12 col-xxl-12 mb-4">
+                <div class="card shadow border-left-info py-2">
+                    <div class="card-body">
+                        <div class="row g-0 align-items-center">
+                            <div class="col me-2">
+                                <div class="text-uppercase text-info fw-bold text-xs mb-1"><span>Interpolation
+                                        Coefficients</span></div>
+                                </span>
+                            </div>
+                            <div class="text-dark fw-bold h5 mb-0">
+                                <span> \( a = {{datacalc['a']}} \) </span> ;
+                                <span>\( b = {{datacalc['b']}} \) </span> ;
+                                <span> \( c = {{datacalc['c']}} \) </span> ;
+                                <span>\( d = {{datacalc['d']}} \) </span> ;
+                                <span> \( e = {{datacalc['e']}} \) </span> ;
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-xl-6 col-xxl-6 mb-4">
+                <div class="card shadow border-left-primary py-2">
+                    <div class="card-body">
+                        <div class="row g-0 align-items-center">
+                            <div class="col me-2">
+                                <div class="text-uppercase fw-bold text-primary text-xs mb-1"><span>coefficn of
+                                        pressure at rest</span></div>
+                                <div class="fw-bold text-dark h5 mb-0"><span>\(K0 = 1 - sin \phi \)
+                                    </span></div>
+                                <div class="fw-bold text-dark h5 mb-0"><span> \(K0 = {{datacalc['K0']}} \)
+                                    </span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-xl-6 col-xxl-6 mb-4">
+                <div class="card shadow border-left-primary py-2">
+                    <div class="card-body">
+                        <div class="row g-0 align-items-center">
+                            <div class="col me-2">
+                                <div class="text-uppercase text-primary fw-bold text-xs mb-1"><span>displacement
+                                        at
+                                        Tu
+                                    </span></div>
+                                <div class="text-dark fw-bold h5 mb-0"><span> \( \Delta t =
+                                        {{datacalc['delta_t']}} \) </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-xl-6 col-xxl-6 mb-4">
+                <div class="card shadow border-left-primary py-2">
+                    <div class="card-body">
+                        <div class="row g-0 align-items-center">
+                            <div class="col me-2">
+                                <div class="text-uppercase text-primary fw-bold text-xs mb-1"><span>horizontal
+                                        bearing
+                                        capacity factors for sand</span></div>
+                                <div class="text-dark fw-bold h5 mb-0"><span>\( Nqh = a + b * X + c * x^2 + d *
+                                        x^3
+                                        + e
+                                        * x^4\)</span></div>
+                                <div class="text-dark fw-bold h5 mb-0"><span> \( Nqh = {{datacalc['Nqh']}} \)
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-xl-6 col-xxl-6 mb-4">
+                <div class="card shadow border-left-primary py-2">
+                    <div class="card-body">
+                        <div class="row g-0 align-items-center">
+                            <div class="col me-2">
+                                <div class="text-uppercase text-primary fw-bold text-xs mb-1"><span>
+                                        lateral soil springs</span></div>
+                                <div class="text-dark fw-bold h5 mb-0"><span>\( Pu = Nqh * \gamma\bar * H * D
+                                        \)</span>
+                                </div>
+                                <div class="text-dark fw-bold h5 mb-0"><span>\( Pu = {{datacalc['Pu']}}
+                                        \)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-xl-6 col-xxl-6 mb-4">
+                <div class="card shadow border-left-primary py-2">
+                    <div class="card-body">
+                        <div class="row g-0 align-items-center">
+                            <div class="col me-2">
+                                <div class="text-uppercase text-primary fw-bold text-xs mb-1"><span>displacement
+                                        at
+                                        Pu</span></div>
+                                <div class="text-dark fw-bold h5 mb-0"><span> \( \Delta p = 0.04 * ( H + D/2 )
+                                        \)</span>
+                                </div>
+                                <div class="text-dark fw-bold h5 mb-0"><span>\(\Delta p = {{datacalc['Pu']}}
+                                        \)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- <div class="col-md-6 col-xl-6 col-xxl-6 mb-4">
+                <div class="card shadow border-left-primary py-2">
+                    <div class="card-body">
+                        <div class="row g-0 align-items-center">
+                            <div class="col me-2">
+                                <div class="text-uppercase text-primary fw-bold text-xs mb-1"><span>Earnings
+                                        (monthly)</span></div>
+                                <div class="text-dark fw-bold h5 mb-0"><span>
+                                        <div>
+                                            \[
+                                            \int_{-\infty}^\infty e^{-x^2} \, dx = \sqrt{\pi}
+                                            \]
+                                        </div>
+                                    </span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+
+            <div class="col-md-6 col-xl-6 col-xxl-6 mb-4">
+                <div class="card shadow border-left-primary py-2">
+                    <div class="card-body">
+                        <div class="row g-0 align-items-center">
+                            <div class="col me-2">
+                                <div class="text-uppercase text-primary fw-bold text-xs mb-1"><span> Vertical
+                                        Uplift
+                                        Soil Springs </span></div>
+                                <div class="text-dark fw-bold h5 mb-0"><span>
+
+                                        \( Qu = Nqv * \gamma * H * D \)
+
+                                    </span></div>
+                                <div class="text-dark fw-bold h5 mb-0"><span> \( Qu = {{datacalc['Qu']}} \)
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-xl-6 col-xxl-6 mb-4">
+                <div class="card shadow border-left-primary py-2">
+                    <div class="card-body">
+                        <div class="row g-0 align-items-center">
+                            <div class="col me-2">
+                                <div class="text-uppercase text-primary fw-bold text-xs mb-1"><span>
+                                        Displacement at
+                                        Vertical Uplift
+                                        Soil Springs </span></div>
+                                <div class="text-dark fw-bold h5 mb-0"><span>
+
+                                        {% if sd == 'dense' %}
+                                        \( \Delta q = 0.01 * H \)
+                                        {% else %}
+                                        \( \Delta q = 0.02 * H \)
+                                        {% endif %}
+                                    </span>
+                                </div>
+                                <div class="text-dark fw-bold h5 mb-0"><span> \( \Delta q =
+                                        {{datacalc['delta_q']}}
+                                        \)
+                                    </span>
+                                </div>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-md-6 col-xl-6 col-xxl-6 mb-4">
+                <div class="card shadow border-left-primary py-2">
+                    <div class="card-body">
+                        <div class="row g-0 align-items-center">
+                            <div class="col me-2">
+                                <div class="text-uppercase text-primary fw-bold text-xs mb-1"><span>bearing capacity
+                                        factors </span></div>
+                                <div class="text-dark fw-bold h5 mb-0"><span> \( Nq = \exp ( \pi * \tan( \phi ))* (
+                                        \tan
+                                        ( \pi /4 + \phi /2) )** 2 \) </span>
+                                </div>
+                                <div class="text-dark fw-bold h5 mb-0"><span> \( Nq = {{datacalc['Nq']}} \) </span>
+                                </div>
+                                <div class="text-dark fw-bold h5 mb-0"><span> \( Ng = \exp( 0.18 * \pi - 2.5 ) \)
+                                    </span>
+                                </div>
+                                <div class="text-dark fw-bold h5 mb-0"><span> \( Ng = {{datacalc['Ng']}} \) </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-md-6 col-xl-6 col-xxl-6 mb-4">
+                <div class="card shadow border-left-primary py-2">
+                    <div class="card-body">
+                        <div class="row g-0 align-items-center">
+                            <div class="col me-2">
+                                <div class="text-uppercase text-primary fw-bold text-xs mb-1"><span> Vertical Bearing
+                                        Soil Springs </span></div>
+                                <div class="text-dark fw-bold h5 mb-0"><span>
+
+                                        \( Qd = ( Nq * \gamma * H * D ) + ( Ng * \gamma * (D ** 2) / 2 ) \)
+
+                                    </span></div>
+                                <div class="text-dark fw-bold h5 mb-0"><span> \( Qd = {{datacalc['Qd']}} \)
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+</section>
+{% endif %}

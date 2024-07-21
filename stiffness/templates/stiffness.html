@@ -50,16 +50,16 @@
                                 <div class="col-sm-12 col-md-6 col-lg-4 col-xl-6 col-xxl-6 col-xxl-6 text-start"><label
                                         class="col-form-label"
                                         style="margin-right: 15px;text-align: left;"><strong>Effective unit weight of
-                                            soil \( \gamma \) =</strong></label></div>
+                                            soil \( \bar\gamma (kN/m^3) \) =</strong></label></div>
                                 <div class="col-lg-4 col-xl-6 col-xxl-6 col-xxl-6 align-self-center"><input
                                         class="form-control form-control-sm" type="number" step='0.01' required min="0"
-                                        max="360" name="gamma" />
+                                        name="gamma" />
                                 </div>
                             </div>
                             <div class="row" style="padding: 12px;">
                                 <div class="col-sm-12 col-md-6 col-lg-4 col-xl-6 col-xxl-6 col-xxl-6 col-md-6"
                                     style="text-align: left;"><label class="col-form-label"
-                                        style="margin-right: 15px;"><strong>Pipe outside diameter \( D =
+                                        style="margin-right: 15px;"><strong>Pipe outside diameter \( D (m) =
                                             \)</strong></label></div>
                                 <div class="col-lg-4 col-xl-6 col-xxl-6 col-xxl-6 align-self-center"><input
                                         class="form-control form-control-sm" type="number" step='0.01' required
@@ -69,7 +69,7 @@
                                 <div class="col-sm-12 col-md-6 col-lg-4 col-xl-6 col-xxl-6 col-xxl-6 text-start"><label
                                         class="col-form-label"
                                         style="margin-right: 15px;text-align: left;"><strong>Depth to pipe
-                                            certerline \( H =\)</strong></label></div>
+                                            certerline \( H (m) = \)</strong></label></div>
                                 <div class="col-lg-4 col-xl-6 col-xxl-6 col-xxl-6 align-self-center"><input
                                         class="form-control form-control-sm" type="number" required step='0.01'
                                         name="depth" />
@@ -100,7 +100,7 @@
                         </form>
                     </div>
                 </div>
-
+ 
             </div>
         </div>
     </div>
@@ -109,7 +109,7 @@
 <div class="container-fluid">
     <h3 class="text-dark mb-1">Results</h3>
 </div>
-
+ 
 <section class="position-relative py-4 py-xl-5">
     <div class="container">
         <div class="row">
@@ -118,22 +118,22 @@
                     <div class="card-body">
                         <div class="row g-0 align-items-center">
                             <div class="col me-2">
-                                <div class="text-uppercase text-danger fw-bold mb-1"> Data
+                                <div class=" text-danger fw-bold mb-1"> Data
                                     <div class="text-dark fw-bold h5 mb-0">
                                         <span> \( \phi = {{datacalc['phi']}} \) </span> ;
-                                        <span> \(\gamma = {{datacalc['gamma']}} \)</span> ;
-                                        <span> \(D = {{datacalc['D']}} \)</span> ;
-                                        <span> \(H = {{datacalc['H']}} \)</span> ;
+                                        <span> \(\bar\gamma = {{datacalc['gamma']}} (kN/m^3) \)</span> ;
+                                        <span> \(D = {{datacalc['D']}} (m) \)</span> ;
+                                        <span> \(H = {{datacalc['H']}} (m) \)</span> ;
                                         <span> \(f = {{datacalc['f']}} \)</span> ;
                                     </div>
                                 </div>
-
+ 
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
+ 
             <div class="col-md-12 col-xl-12 col-xxl-12 mb-4">
                 <div class="card shadow border-left-info py-2">
                     <div class="card-body">
@@ -175,18 +175,77 @@
                     <div class="card-body">
                         <div class="row g-0 align-items-center">
                             <div class="col me-2">
+                                <div class="text-uppercase fw-bold text-primary text-xs mb-1"><span>interface angle of
+                                        friction for pipe and soil</span></div>
+                                <div class="fw-bold text-dark h5 mb-0"><span>\(\delta = f * \phi \)
+                                    </span></div>
+                                <div class="fw-bold text-dark h5 mb-0"><span> \(\delta = {{datacalc['delta']}} \)
+                                    </span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-xl-6 col-xxl-6 mb-4">
+                <div class="card shadow border-left-primary py-2">
+                    <div class="card-body">
+                        <div class="row g-0 align-items-center">
+                            <div class="col me-2">
+                                <div class="text-uppercase fw-bold text-primary text-xs mb-1"><span> Axial Soil Springs
+                                    </span></div>
+                                <div class="fw-bold text-dark h5 mb-0"><span>\( Tu = \pi * D * H * \bar\gamma * (1+K0)
+                                        / 2
+                                        * \tan( \delta) \)
+                                    </span></div>
+                                <div class="fw-bold text-dark h5 mb-0"><span> \(Tu = {{datacalc['Tu']}} (kN/m) \)
+                                    </span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-xl-6 col-xxl-6 mb-4">
+                <div class="card shadow border-left-primary py-2">
+                    <div class="card-body">
+                        <div class="row g-0 align-items-center">
+                            <div class="col me-2">
                                 <div class="text-uppercase text-primary fw-bold text-xs mb-1"><span>displacement
                                         at
                                         Tu
                                     </span></div>
                                 <div class="text-dark fw-bold h5 mb-0"><span> \( \Delta t =
-                                        {{datacalc['delta_t']}} \) </span>
+                                        {{datacalc['delta_t']}} (m) \) </span>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+ 
+            <div class="col-md-6 col-xl-6 col-xxl-6 mb-4">
+                <div class="card shadow border-left-success py-2">
+                    <div class="card-body">
+                        <div class="row g-0 align-items-center">
+                            <div class="col me-2">
+                                <div class="text-uppercase text-primary fw-bold text-xs mb-1"><span> Axial Soil
+                                        springs stiffness</span></div>
+                                <div class="text-dark fw-bold h5 mb-0"><span>\( 1st = Tu / \Delta t \)
+                                    </span></div>
+                                <div class="text-dark fw-bold h5 mb-0"><span> \( 1st = {{datacalc['aTu']}} (kN/m^2) \)
+                                    </span>
+                                </div>
+                                <div class="text-dark fw-bold h5 mb-0"><span>\( 2nd = ( Tu / \Delta t ) / D \)
+                                    </span></div>
+                                <div class="text-dark fw-bold h5 mb-0"><span> \( 2nd = {{datacalc['bTu']}} (kN/m^3) \)
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+ 
+ 
             <div class="col-md-6 col-xl-6 col-xxl-6 mb-4">
                 <div class="card shadow border-left-primary py-2">
                     <div class="card-body">
@@ -214,18 +273,18 @@
                             <div class="col me-2">
                                 <div class="text-uppercase text-primary fw-bold text-xs mb-1"><span>
                                         lateral soil springs</span></div>
-                                <div class="text-dark fw-bold h5 mb-0"><span>\( Pu = Nqh * \gamma\bar * H * D
+                                <div class="text-dark fw-bold h5 mb-0"><span>\( Pu = Nqh * \bar\gamma * H * D
                                         \)</span>
                                 </div>
                                 <div class="text-dark fw-bold h5 mb-0"><span>\( Pu = {{datacalc['Pu']}}
-                                        \)</span>
+                                        (kN/m) \)</span>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
+ 
             <div class="col-md-6 col-xl-6 col-xxl-6 mb-4">
                 <div class="card shadow border-left-primary py-2">
                     <div class="card-body">
@@ -238,34 +297,59 @@
                                         \)</span>
                                 </div>
                                 <div class="text-dark fw-bold h5 mb-0"><span>\(\Delta p = {{datacalc['Pu']}}
-                                        \)</span>
+                                        (m) \)</span>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <!-- <div class="col-md-6 col-xl-6 col-xxl-6 mb-4">
-                <div class="card shadow border-left-primary py-2">
+ 
+            <div class="col-md-6 col-xl-6 col-xxl-6 mb-4">
+                <div class="card shadow border-left-success py-2">
                     <div class="card-body">
                         <div class="row g-0 align-items-center">
                             <div class="col me-2">
-                                <div class="text-uppercase text-primary fw-bold text-xs mb-1"><span>Earnings
-                                        (monthly)</span></div>
-                                <div class="text-dark fw-bold h5 mb-0"><span>
-                                        <div>
-                                            \[
-                                            \int_{-\infty}^\infty e^{-x^2} \, dx = \sqrt{\pi}
-                                            \]
-                                        </div>
+                                <div class="text-uppercase text-primary fw-bold text-xs mb-1"><span>lateral soil
+                                        springs
+                                        stiffness</span></div>
+                                <div class="text-dark fw-bold h5 mb-0"><span>\( 1st = Pu / \Delta p \)
                                     </span></div>
+                                <div class="text-dark fw-bold h5 mb-0"><span> \( 1st = {{datacalc['aPu']}} (kN/m^2) \)
+                                    </span>
+                                </div>
+                                <div class="text-dark fw-bold h5 mb-0"><span>\( 2nd = ( Pu / \Delta p ) / D \)
+                                    </span></div>
+                                <div class="text-dark fw-bold h5 mb-0"><span> \( 2nd = {{datacalc['bPu']}} (kN/m^3) \)
+                                    </span>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div> -->
-
+            </div>
+ 
+            <div class="col-md-6 col-xl-6 col-xxl-6 mb-4">
+                <div class="card shadow border-left-primary py-2">
+                    <div class="card-body">
+                        <div class="row g-0 align-items-center">
+                            <div class="col me-2">
+                                <div class="text-uppercase text-primary fw-bold text-xs mb-1"><span> vertical uplift
+                                        factor for sand </span></div>
+                                <div class="text-dark fw-bold h5 mb-0"><span>
+ 
+                                        \( Nqv = ( \phi * H ) / ( 44 * D ) \)
+ 
+                                    </span></div>
+                                <div class="text-dark fw-bold h5 mb-0"><span> \( Nqv = {{datacalc['Nqv']}} \)
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+ 
             <div class="col-md-6 col-xl-6 col-xxl-6 mb-4">
                 <div class="card shadow border-left-primary py-2">
                     <div class="card-body">
@@ -275,11 +359,11 @@
                                         Uplift
                                         Soil Springs </span></div>
                                 <div class="text-dark fw-bold h5 mb-0"><span>
-
-                                        \( Qu = Nqv * \gamma * H * D \)
-
+ 
+                                        \( Qu = Nqv * \bar\gamma * H * D \)
+ 
                                     </span></div>
-                                <div class="text-dark fw-bold h5 mb-0"><span> \( Qu = {{datacalc['Qu']}} \)
+                                <div class="text-dark fw-bold h5 mb-0"><span> \( Qu = {{datacalc['Qu']}} (kN/m) \)
                                     </span>
                                 </div>
                             </div>
@@ -287,7 +371,7 @@
                     </div>
                 </div>
             </div>
-
+ 
             <div class="col-md-6 col-xl-6 col-xxl-6 mb-4">
                 <div class="card shadow border-left-primary py-2">
                     <div class="card-body">
@@ -298,7 +382,7 @@
                                         Vertical Uplift
                                         Soil Springs </span></div>
                                 <div class="text-dark fw-bold h5 mb-0"><span>
-
+ 
                                         {% if sd == 'dense' %}
                                         \( \Delta q = 0.01 * H \)
                                         {% else %}
@@ -307,7 +391,7 @@
                                     </span>
                                 </div>
                                 <div class="text-dark fw-bold h5 mb-0"><span> \( \Delta q =
-                                        {{datacalc['delta_q']}}
+                                        {{datacalc['delta_q']}} (m)
                                         \)
                                     </span>
                                 </div>
@@ -317,8 +401,36 @@
                     </div>
                 </div>
             </div>
-
-
+ 
+            <div class="col-md-6 col-xl-6 col-xxl-6 mb-4">
+                <div class="card shadow border-left-success py-2">
+                    <div class="card-body">
+                        <div class="row g-0 align-items-center">
+                            <div class="col me-2">
+                                <div class="text-uppercase text-primary fw-bold text-xs mb-1"><span> Vertical Uplift
+                                        Soil Springs
+                                        stiffness </span></div>
+                                <div class="text-dark fw-bold h5 mb-0"><span>
+ 
+                                        \( 1st = Qu / \Delta q \)
+ 
+                                    </span></div>
+                                <div class="text-dark fw-bold h5 mb-0"><span> \( 1st = {{datacalc['aQu']}} (kN/m^2) \)
+                                    </span>
+                                </div>
+                                <div class="text-dark fw-bold h5 mb-0"><span> \( 2nd = ( Qu / \Delta q ) / D \)
+                                    </span></div>
+                                <div class="text-dark fw-bold h5 mb-0"><span> \( 2nd = {{datacalc['bQu']}} (kN/m^3) \)
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+ 
+ 
+            </div>
+ 
             <div class="col-md-6 col-xl-6 col-xxl-6 mb-4">
                 <div class="card shadow border-left-primary py-2">
                     <div class="card-body">
@@ -328,35 +440,37 @@
                                         factors </span></div>
                                 <div class="text-dark fw-bold h5 mb-0"><span> \( Nq = \exp ( \pi * \tan( \phi ))* (
                                         \tan
-                                        ( \pi /4 + \phi /2) )** 2 \) </span>
+                                        ( \pi /4 + \phi /2) )^2 \) </span>
                                 </div>
                                 <div class="text-dark fw-bold h5 mb-0"><span> \( Nq = {{datacalc['Nq']}} \) </span>
                                 </div>
-                                <div class="text-dark fw-bold h5 mb-0"><span> \( Ng = \exp( 0.18 * \pi - 2.5 ) \)
+                                <div class="text-dark fw-bold h5 mb-0"><span> \( N\gamma = \exp( 0.18 * \phi - 2.5 ) \)
                                     </span>
                                 </div>
-                                <div class="text-dark fw-bold h5 mb-0"><span> \( Ng = {{datacalc['Ng']}} \) </span>
+                                <div class="text-dark fw-bold h5 mb-0"><span> \( N\gamma = {{datacalc['Ng']}} \)
+                                    </span>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
+ 
             </div>
-
+ 
             <div class="col-md-6 col-xl-6 col-xxl-6 mb-4">
                 <div class="card shadow border-left-primary py-2">
                     <div class="card-body">
                         <div class="row g-0 align-items-center">
                             <div class="col me-2">
-                                <div class="text-uppercase text-primary fw-bold text-xs mb-1"><span> Vertical Bearing
+                                <div class="text-uppercase text-primary fw-bold text-xs mb-1"><span> Vertical
+                                        Bearing
                                         Soil Springs </span></div>
                                 <div class="text-dark fw-bold h5 mb-0"><span>
-
-                                        \( Qd = ( Nq * \gamma * H * D ) + ( Ng * \gamma * (D ** 2) / 2 ) \)
-
+ 
+                                        \( Qd = ( Nq * \bar\gamma * H * D ) + ( N\gamma * \gamma * (D ^ 2) / 2 ) \)
+ 
                                     </span></div>
-                                <div class="text-dark fw-bold h5 mb-0"><span> \( Qd = {{datacalc['Qd']}} \)
+                                <div class="text-dark fw-bold h5 mb-0"><span> \( Qd = {{datacalc['Qd']}} (kN/m) \)
                                     </span>
                                 </div>
                             </div>
@@ -364,10 +478,66 @@
                     </div>
                 </div>
             </div>
-
-
-
+ 
+            <div class="col-md-6 col-xl-6 col-xxl-6 mb-4">
+                <div class="card shadow border-left-primary py-2">
+                    <div class="card-body">
+                        <div class="row g-0 align-items-center">
+                            <div class="col me-2">
+                                <div class="text-uppercase text-primary fw-bold text-xs mb-1"><span>
+                                        Displacement at
+                                        Vertical Bearing
+                                        Soil Springs </span></div>
+                                <div class="text-dark fw-bold h5 mb-0"><span>
+ 
+                                        \( \Delta qd = 0.1 * D \)
+ 
+                                    </span></div>
+                                <div class="text-dark fw-bold h5 mb-0"><span> \( \Delta qd =
+                                        {{datacalc['delta_qd']}} (m)
+                                        \)
+                                    </span>
+                                </div>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+ 
+            </div>
+ 
+            <div class="col-md-6 col-xl-6 col-xxl-6 mb-4">
+                <div class="card shadow border-left-success py-2">
+                    <div class="card-body">
+                        <div class="row g-0 align-items-center">
+                            <div class="col me-2">
+                                <div class="text-uppercase text-primary fw-bold text-xs mb-1"><span> Vertical
+                                        Bearing
+                                        Soil Springs
+                                        stiffness </span></div>
+                                <div class="text-dark fw-bold h5 mb-0"><span>
+ 
+                                        \( 1st = Qd / \Delta qd \)
+ 
+                                    </span></div>
+                                <div class="text-dark fw-bold h5 mb-0"><span> \( 1st = {{datacalc['aQd']}} (kN/m^2) \)
+                                    </span>
+                                </div>
+                                <div class="text-dark fw-bold h5 mb-0"><span> \( 2nd = ( Qd / \Delta qd ) / D \)
+                                    </span></div>
+                                <div class="text-dark fw-bold h5 mb-0"><span> \( 2nd = {{datacalc['bQd']}} (kN/m^3) \)
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+ 
+ 
+ 
+ 
+ 
+            </div>
         </div>
-    </div>
 </section>
 {% endif %}

@@ -32,7 +32,7 @@ def dashboard():
 
 @app.route('/handle_data', methods=['POST']) 
 def handle_data():
-    data_j = calcul_stiffness.stiffness_calculation(request.form['soilDensity'],                       
+    data_j = calcul_stiffness.stiffness_calculation(request.form['soilDensity'],request.form['watertable'],                       
                             float(request.form['pipeOutside']), float(request.form['depth']),
                             float(request.form['pipeCoating']), float(request.form['phi']),float(request.form['gamma']))
     # return render_template('index.html', page_html='stiffness', datacalc=calc)

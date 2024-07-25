@@ -95,8 +95,11 @@ def vertical_uplift_factor(phi, H, D):
  
 # Qd Vertical Bearing Soil Springs (kN/m)
     # gamma = gammaBar + 10
-def vertical_bearing_soil_springs(Nq, Ng, gammaBar, H, D):
-    Qd = (  Nq * gammaBar * H * D ) + ( Ng * ( gammaBar + 10 ) * (D ** 2) / 2 )
+def vertical_bearing_soil_springs(wt,Nq, Ng, gammaBar, H, D):
+    if wt == 'Dry':
+        Qd = (  Nq * gammaBar * H * D ) + ( Ng * ( gammaBar ) * (D ** 2) / 2 )
+    else :
+        Qd = (  Nq * gammaBar * H * D ) + ( Ng * ( gammaBar + 10 ) * (D ** 2) / 2 )
     Qd = round(Qd, 3)
     return Qd
  
@@ -145,7 +148,7 @@ def vertical_bearing_soil_springs_stiffness(Qd, delta_qd, D):
  
 # stiffness calculation
  
-def stiffness_calculation(sd, D, H, f,phi,gammaBar):
+def stiffness_calculation(sd,wt, D, H, f,phi,gammaBar):
    
     a,b,c,d,e = interpolate_parameters(phi)
     delta_t = displacement_at_Tu(sd)
@@ -159,7 +162,7 @@ def stiffness_calculation(sd, D, H, f,phi,gammaBar):
     Qu = vertical_uplift_soil_springs(Nqv, gammaBar, H, D)
     delta_qu = displacement_at_Qu(sd, H, D)
     Nq, Ng = bearing_capacity_factors(phi)
-    Qd = vertical_bearing_soil_springs(Nq, Ng, gammaBar, H, D)
+    Qd = vertical_bearing_soil_springs(wt,Nq, Ng, gammaBar, H, D)
     delta_qd = displacement_at_Qd(D, H)
  
     # stiffness calculation
